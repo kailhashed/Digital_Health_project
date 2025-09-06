@@ -1,0 +1,16 @@
+{
+  "total_predictions": 48,
+  "disagreement_rate": 0.8958333333333334,
+  "vocal_right_rate": 0.5813953488372093,
+  "text_right_rate": 0.06976744186046512,
+  "disagreement_by_emotion": {
+    "happy": 6,
+    "disgust": 6,
+    "fearful": 6,
+    "surprised": 6,
+    "angry": 6,
+    "calm": 5,
+    "sad": 5,
+    "neutral": 3
+  }
+}
