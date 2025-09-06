@@ -1,0 +1,23 @@
+{
+  "models": {
+    "simplecnn": "models/simplecnn/best_SimpleCNN.pth",
+    "resnet": "models/resnet/best_ResNet.pth",
+    "lstm": "models/lstm/best_LSTM.pth",
+    "transformer": "models/transformer/best_Transformer.pth",
+    "wav2vec2": "models/pretrained/wav2vec2/best_FixedWav2Vec2.pth",
+    "simplecnnaudio": "models/pretrained/simplecnnaudio/best_SimpleCNNAudio.pth"
+  },
+  "results": {
+    "simplecnn": "results/simplecnn/",
+    "resnet": "results/resnet/",
+    "lstm": "results/lstm/",
+    "transformer": "results/transformer/",
+    "pretrained": "results/pretrained/",
+    "comparisons": "results/comparisons/",
+    "visualizations": "results/visualizations/"
+  },
+  "data": {
+    "organized": "organized_by_emotion",
+    "raw": "Dataset"
+  }
+}

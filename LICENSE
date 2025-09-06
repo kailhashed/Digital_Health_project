@@ -1,0 +1,48 @@
+MIT License
+
+Copyright (c) 2025 Audio Emotion Recognition System
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+Dataset Attributions:
+
+This project uses the following datasets under their respective licenses:
+
+1. RAVDESS (Ryerson Audio-Visual Database of Emotional Speech and Song)
+   - License: Creative Commons Attribution 4.0 International License
+   - Citation: Livingstone SR, Russo FA (2018) The Ryerson Audio-Visual Database of 
+     Emotional Speech and Song (RAVDESS): A dynamic, multimodal set of facial and 
+     vocal expressions in North American English. PLoS ONE 13(5): e0196391. 
+     https://doi.org/10.1371/journal.pone.0196391
+
+2. CREMA-D (Crowd-sourced Emotional Multimodal Actors Dataset)
+   - License: Open access dataset
+   - Citation: Cao, H., Cooper, D. G., Keutmann, M. K., Gur, R. C., Nenkova, A., 
+     & Verma, R. (2014). CREMA-D: Crowd-sourced emotional multimodal actors dataset. 
+     IEEE transactions on affective computing, 5(4), 377-390.
+
+3. TESS (Toronto Emotional Speech Set)
+   - License: Open access dataset
+   - Citation: Dupuis, K., & Pichora-Fuller, M. K. (2010). Toronto emotional speech 
+     set (TESS). University of Toronto, Psychology Department.
+
+Users of this software must comply with the respective dataset licenses when using 
+the provided datasets or any derivatives thereof.

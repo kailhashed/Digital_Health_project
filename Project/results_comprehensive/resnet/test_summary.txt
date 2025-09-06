@@ -1,0 +1,18 @@
+ResNet Test Summary
+========================================
+
+Test Accuracy: 0.7634
+Macro AUC: 0.9685
+Macro F1-Score: 0.7603
+Weighted F1-Score: 0.7621
+
+Per-Emotion Metrics:
+------------------------------
+angry       : P=0.838, R=0.877, F1=0.857
+calm        : P=0.508, R=0.842, F1=0.634
+disgust     : P=0.735, R=0.772, F1=0.753
+fearful     : P=0.763, R=0.646, F1=0.700
+happy       : P=0.767, R=0.743, F1=0.755
+neutral     : P=0.769, R=0.791, F1=0.780
+sad         : P=0.718, R=0.681, F1=0.699
+surprised   : P=0.846, R=0.975, F1=0.906

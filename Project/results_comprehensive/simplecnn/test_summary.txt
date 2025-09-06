@@ -1,0 +1,18 @@
+SimpleCNN Test Summary
+========================================
+
+Test Accuracy: 0.6872
+Macro AUC: 0.9488
+Macro F1-Score: 0.7028
+Weighted F1-Score: 0.6855
+
+Per-Emotion Metrics:
+------------------------------
+angry       : P=0.743, R=0.820, F1=0.780
+calm        : P=0.569, R=0.763, F1=0.652
+disgust     : P=0.723, R=0.560, F1=0.631
+fearful     : P=0.657, R=0.606, F1=0.630
+happy       : P=0.719, R=0.611, F1=0.661
+neutral     : P=0.642, R=0.737, F1=0.686
+sad         : P=0.598, R=0.713, F1=0.650
+surprised   : P=0.940, R=0.924, F1=0.932
