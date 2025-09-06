@@ -342,49 +342,56 @@ class CRNNTrainer:
 
 def main():
     """Main training function"""
-    print("🎭 CRNN Emotion Recognition Training")
-    print("=" * 50)
-    
-    # Get device
-    device = get_device()
-    
-    # Load data
-    X_train, y_train, X_val, y_val, X_test, y_test = load_emotion_data()
-    
-    # Create data loaders
-    train_loader, val_loader, test_loader = create_data_loaders(
-        X_train, y_train, X_val, y_val, X_test, y_test,
-        batch_size=32, num_workers=4
-    )
-    
-    # Initialize trainer
-    trainer = CRNNTrainer(device)
-    
-    # Train model
-    history = trainer.train(train_loader, val_loader, max_epochs=200)
-    
-    # Evaluate on test set
-    test_results = trainer.evaluate(test_loader)
-    
-    # Plot training history
-    trainer.plot_training_history()
-    
-    # Save results
-    results = {
-        'model': 'CRNN',
-        'training_history': history,
-        'test_results': test_results,
-        'timestamp': datetime.now().isoformat(),
-        'device': str(device)
-    }
-    
-    os.makedirs("results/crnn", exist_ok=True)
-    with open("results/crnn/crnn_results.json", "w") as f:
-        json.dump(results, f, indent=2)
-    
-    print(f"\n🎉 CRNN training completed!")
-    print(f"   Final test accuracy: {test_results['test_accuracy']:.2f}%")
-    print(f"   Results saved to results/crnn/")
+    try:
+        print("🎭 CRNN Emotion Recognition Training")
+        print("=" * 50)
+        
+        # Get device
+        device = get_device()
+        
+        # Load data
+        X_train, y_train, X_val, y_val, X_test, y_test = load_emotion_data()
+        
+        # Create data loaders (num_workers=0 to avoid multiprocessing issues)
+        train_loader, val_loader, test_loader = create_data_loaders(
+            X_train, y_train, X_val, y_val, X_test, y_test,
+            batch_size=32, num_workers=0
+        )
+        
+        # Initialize trainer
+        trainer = CRNNTrainer(device)
+        
+        # Train model
+        history = trainer.train(train_loader, val_loader, max_epochs=200)
+        
+        # Evaluate on test set
+        test_results = trainer.evaluate(test_loader)
+        
+        # Plot training history
+        trainer.plot_training_history()
+        
+        # Save results
+        results = {
+            'model': 'CRNN',
+            'training_history': history,
+            'test_results': test_results,
+            'timestamp': datetime.now().isoformat(),
+            'device': str(device)
+        }
+        
+        os.makedirs("results/crnn", exist_ok=True)
+        with open("results/crnn/crnn_results.json", "w") as f:
+            json.dump(results, f, indent=2)
+        
+        print(f"\n🎉 CRNN training completed!")
+        print(f"   Final test accuracy: {test_results['test_accuracy']:.2f}%")
+        print(f"   Results saved to results/crnn/")
+        
+    except Exception as e:
+        print(f"❌ Error during CRNN training: {e}")
+        print("Attempting to continue with error handling...")
+        import traceback
+        traceback.print_exc()
 
 if __name__ == "__main__":
     main()

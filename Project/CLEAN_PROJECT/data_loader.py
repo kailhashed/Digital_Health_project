@@ -111,10 +111,23 @@ class EmotionDataset(Dataset):
             for feature in feature_list:
                 # Resize to match mel-spectrogram shape (128, 130)
                 if feature.shape[0] != self.n_mels or feature.shape[1] != 130:
-                    # Use interpolation to resize
-                    from scipy.ndimage import zoom
-                    zoom_factors = (self.n_mels / feature.shape[0], 130 / feature.shape[1])
-                    feature = zoom(feature, zoom_factors, order=1)
+                    # Use simple padding/trimming to resize
+                    if feature.shape[0] < self.n_mels:
+                        # Pad with zeros
+                        pad_height = self.n_mels - feature.shape[0]
+                        feature = np.pad(feature, ((0, pad_height), (0, 0)), mode='constant')
+                    elif feature.shape[0] > self.n_mels:
+                        # Trim
+                        feature = feature[:self.n_mels, :]
+                    
+                    if feature.shape[1] < 130:
+                        # Pad with zeros
+                        pad_width = 130 - feature.shape[1]
+                        feature = np.pad(feature, ((0, 0), (0, pad_width)), mode='constant')
+                    elif feature.shape[1] > 130:
+                        # Trim
+                        feature = feature[:, :130]
+                
                 processed_features.append(feature)
             
             # Stack into 8-channel tensor

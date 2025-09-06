@@ -1,0 +1,161 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch and 'origin/main' have diverged,
+# and have 1 and 1 different commits each, respectively.
+#
+# Changes to be committed:
+#	deleted:    CHANGELOG.md
+#	deleted:    CITATION.cff
+#	deleted:    CONTRIBUTING.md
+#	deleted:    GITHUB_SETUP.md
+#	deleted:    NAVIGATION.md
+#	deleted:    PROJECT_FINAL_SUMMARY.md
+#	new file:   Project/CLEAN_PROJECT/README.md
+#	new file:   Project/CLEAN_PROJECT/README_CLEAN.md
+#	new file:   Project/CLEAN_PROJECT/TRAINING_README.md
+#	new file:   Project/CLEAN_PROJECT/check_status.py
+#	new file:   Project/CLEAN_PROJECT/data_loader.py
+#	new file:   Project/CLEAN_PROJECT/evaluate_all_models.py
+#	new file:   Project/CLEAN_PROJECT/monitor_training.py
+#	renamed:    Project/config/paths.json -> Project/CLEAN_PROJECT/paths.json
+#	new file:   Project/CLEAN_PROJECT/requirements.txt
+#	renamed:    Project/comparison_results_20250906_224712/metrics/comparison_metrics.json -> Project/CLEAN_PROJECT/results/comparison/metrics/comparison_metrics.json
+#	renamed:    Project/comparison_results_20250906_224712/predictions/comparison_results.json -> Project/CLEAN_PROJECT/results/comparison/predictions/comparison_results.json
+#	renamed:    Project/comparison_results_20250906_224712/reports/model_comparison_report.md -> Project/CLEAN_PROJECT/results/comparison/reports/model_comparison_report.md
+#	renamed:    Project/comparison_results_20250906_224712/visualizations/confusion_matrices.png -> Project/CLEAN_PROJECT/results/comparison/visualizations/confusion_matrices.png
+#	renamed:    Project/comparison_results_20250906_224712/visualizations/model_comparison.png -> Project/CLEAN_PROJECT/results/comparison/visualizations/model_comparison.png
+#	renamed:    Project/comparison_results_20250906_224712/visualizations/per_class_comparison.png -> Project/CLEAN_PROJECT/results/comparison/visualizations/per_class_comparison.png
+#	renamed:    Project/results_densenet_20250906_230232/confusion_matrix.png -> Project/CLEAN_PROJECT/results/densenet/confusion_matrix.png
+#	renamed:    Project/results_densenet_20250906_230232/results.json -> Project/CLEAN_PROJECT/results/densenet/results.json
+#	renamed:    Project/results_densenet_20250906_230232/training_history.png -> Project/CLEAN_PROJECT/results/densenet/training_history.png
+#	renamed:    Project/results_ensemble_optimal/final_recommendations.md -> Project/CLEAN_PROJECT/results/ensemble/final_recommendations.md
+#	renamed:    Project/results_ensemble_optimal/per_emotion_analysis.csv -> Project/CLEAN_PROJECT/results/ensemble/per_emotion_analysis.csv
+#	renamed:    Project/results_ensemble_optimal/test_session_20250906_221650/config_optimal_configuration.json -> Project/CLEAN_PROJECT/results/ensemble/test_session_20250906_221650/config_optimal_configuration.json
+#	renamed:    Project/results_ensemble_optimal/test_session_20250906_221650/ensemble_testing_report.md -> Project/CLEAN_PROJECT/results/ensemble/test_session_20250906_221650/ensemble_testing_report.md
+#	renamed:    Project/results_ensemble_optimal/test_session_20250906_221650/visualizations/confusion_matrix_best_optimal_configuration.png -> Project/CLEAN_PROJECT/results/ensemble/test_session_20250906_221650/visualizations/confusion_matrix_best_optimal_configuration.png
+#	renamed:    Project/results_ensemble_optimal/test_session_20250906_221650/visualizations/performance_comparison.png -> Project/CLEAN_PROJECT/results/ensemble/test_session_20250906_221650/visualizations/performance_comparison.png
+#	renamed:    Project/results_ensemble_optimal/test_session_20250906_221650/visualizations/performance_distribution.png -> Project/CLEAN_PROJECT/results/ensemble/test_session_20250906_221650/visualizations/performance_distribution.png
+#	renamed:    Project/results_ensemble_optimal/vocal_text_analysis.json -> Project/CLEAN_PROJECT/results/ensemble/vocal_text_analysis.json
+#	new file:   Project/CLEAN_PROJECT/run_parallel_training.py
+#	renamed:    Project/scripts/compare_models.py -> Project/CLEAN_PROJECT/scripts/compare_models.py
+#	new file:   Project/CLEAN_PROJECT/scripts/evaluate_model.py
+#	new file:   Project/CLEAN_PROJECT/scripts/predict_emotion.py
+#	renamed:    Project/scripts/train_all_models.py -> Project/CLEAN_PROJECT/scripts/train_all_models.py
+#	renamed:    Project/src/models/__init__.py -> Project/CLEAN_PROJECT/src/__init__.py
+#	renamed:    Project/src/models/custom_models.py -> Project/CLEAN_PROJECT/src/custom_models.py
+#	renamed:    Project/src/data/__init__.py -> Project/CLEAN_PROJECT/src/data/__init__.py
+#	renamed:    Project/src/data/dataset.py -> Project/CLEAN_PROJECT/src/data/dataset.py
+#	renamed:    Project/src/data/preprocessing.py -> Project/CLEAN_PROJECT/src/data/preprocessing.py
+#	renamed:    Project/src/data/utils.py -> Project/CLEAN_PROJECT/src/data/utils.py
+#	renamed:    Project/src/models/ensemble_model.py -> Project/CLEAN_PROJECT/src/ensemble_model.py
+#	renamed:    Project/src/evaluation/__init__.py -> Project/CLEAN_PROJECT/src/evaluation/__init__.py
+#	renamed:    Project/src/evaluation/comparison.py -> Project/CLEAN_PROJECT/src/evaluation/comparison.py
+#	renamed:    Project/src/evaluation/metrics.py -> Project/CLEAN_PROJECT/src/evaluation/metrics.py
+#	new file:   Project/CLEAN_PROJECT/src/models/__init__.py
+#	new file:   Project/CLEAN_PROJECT/src/models/custom_models.py
+#	new file:   Project/CLEAN_PROJECT/src/models/ensemble_model.py
+#	renamed:    Project/src/models/pretrained_models.py -> Project/CLEAN_PROJECT/src/models/pretrained_models.py
+#	new file:   Project/CLEAN_PROJECT/src/pretrained_models.py
+#	renamed:    Project/src/training/__init__.py -> Project/CLEAN_PROJECT/src/training/__init__.py
+#	renamed:    Project/src/training/trainer.py -> Project/CLEAN_PROJECT/src/training/trainer.py
+#	renamed:    Project/src/utils/__init__.py -> Project/CLEAN_PROJECT/src/utils/__init__.py
+#	renamed:    Project/src/utils/config.py -> Project/CLEAN_PROJECT/src/utils/config.py
+#	renamed:    Project/src/utils/logger.py -> Project/CLEAN_PROJECT/src/utils/logger.py
+#	new file:   Project/CLEAN_PROJECT/train_adaboost.py
+#	new file:   Project/CLEAN_PROJECT/train_crnn.py
+#	new file:   Project/CLEAN_PROJECT/train_densenet.py
+#	new file:   Project/CLEAN_PROJECT/train_naivebayes.py
+#	new file:   Project/CLEAN_PROJECT/train_xgboost.py
+#	deleted:    Project/DENSENET_EPOCH_52_BEST.md
+#	deleted:    Project/DENSENET_RESTORED.md
+#	deleted:    Project/FINAL_PROJECT_SUMMARY.md
+#	deleted:    Project/README_DENSENET.md
+#	deleted:    Project/README_ENSEMBLE.md
+#	deleted:    Project/README_OPTIMIZED_DENSENET.md
+#	deleted:    Project/comprehensive_model_comparison.py
+#	deleted:    Project/create_epoch_52_densenet.py
+#	deleted:    Project/create_epoch_54_densenet.py
+#	deleted:    Project/data_preprocessing.py
+#	deleted:    Project/demo_ensemble.py
+#	deleted:    Project/docs/DATASETS.md
+#	deleted:    Project/docs/INSTALLATION.md
+#	deleted:    Project/emotion_recognition_models.py
+#	deleted:    Project/ensemble_emotion_analyzer.py
+#	deleted:    Project/ensemble_testing_framework.py
+#	deleted:    Project/evaluate_densenet_epoch_52.py
+#	deleted:    Project/example_usage.py
+#	deleted:    Project/install_from_scratch.ps1
+#	deleted:    Project/integrate_densenet_with_existing.py
+#	deleted:    Project/optimization_results/grid_search_results.csv
+#	deleted:    Project/optimization_results/optimization_report.md
+#	deleted:    Project/optimize_ensemble_config.py
+#	deleted:    Project/organize_emotion_dataset.ps1
+#	deleted:    Project/requirements.txt
+#	deleted:    Project/requirements_ensemble.txt
+#	deleted:    Project/results/comparisons/comprehensive_model_comparison.csv
+#	deleted:    Project/results/comparisons/model_comparison.csv
+#	deleted:    Project/results/comparisons/model_comparison_report.md
+#	deleted:    Project/results/comparisons/overall_comparison.csv
+#	deleted:    Project/results/comprehensive_comparison_report.md
+#	deleted:    Project/results/comprehensive_model_comparison.csv
+#	deleted:    Project/results/final_comparison_report.md
+#	deleted:    Project/results/model_comparison.csv
+#	deleted:    Project/results/model_comparison.png
+#	deleted:    Project/results/model_comparison_report.md
+#	deleted:    Project/results/overall_comparison.csv
+#	deleted:    Project/results/resnet/resnet_test_metrics.csv
+#	deleted:    Project/results/resnet/resnet_test_results.png
+#	deleted:    Project/results/resnet/resnet_test_summary.txt
+#	deleted:    Project/results/resnet_test_metrics.csv
+#	deleted:    Project/results/resnet_test_results.png
+#	deleted:    Project/results/resnet_test_summary.txt
+#	deleted:    Project/results/roc_curves_comparison.png
+#	deleted:    Project/results/simplecnn/simplecnn_test_metrics.csv
+#	deleted:    Project/results/simplecnn/simplecnn_test_results.png
+#	deleted:    Project/results/simplecnn_test_metrics.csv
+#	deleted:    Project/results/simplecnn_test_results.png
+#	deleted:    Project/results/training_curves_comparison.png
+#	deleted:    Project/results/visualizations/model_comparison.png
+#	deleted:    Project/results/visualizations/roc_curves_comparison.png
+#	deleted:    Project/results/visualizations/training_curves_comparison.png
+#	deleted:    Project/results_comprehensive/comprehensive_model_comparison.png
+#	deleted:    Project/results_comprehensive/comprehensive_test_report.md
+#	deleted:    Project/results_comprehensive/model_performance_summary.csv
+#	deleted:    Project/results_comprehensive/resnet/test_metrics.csv
+#	deleted:    Project/results_comprehensive/resnet/test_summary.txt
+#	deleted:    Project/results_comprehensive/simplecnn/test_metrics.csv
+#	deleted:    Project/results_comprehensive/simplecnn/test_summary.txt
+#	deleted:    Project/results_densenet_epoch_52_evaluation_20250907_005848/confusion_matrices.png
+#	deleted:    Project/results_ensemble_fixed_20250906_224131/metrics/per_class_metrics.csv
+#	deleted:    Project/results_ensemble_fixed_20250906_224131/metrics/performance_metrics.json
+#	deleted:    Project/results_ensemble_fixed_20250906_224131/predictions/raw_results.json
+#	deleted:    Project/results_ensemble_fixed_20250906_224131/reports/ensemble_test_report.md
+#	deleted:    Project/results_ensemble_fixed_20250906_224131/visualizations/component_comparison.png
+#	deleted:    Project/results_ensemble_fixed_20250906_224131/visualizations/confidence_analysis.png
+#	deleted:    Project/results_ensemble_fixed_20250906_224131/visualizations/confusion_matrix.png
+#	deleted:    Project/results_ensemble_fixed_20250906_224131/visualizations/per_class_performance.png
+#	deleted:    Project/results_ensemble_fixed_20250906_224131/visualizations/stt_analysis.png
+#	deleted:    Project/resume_densenet_training.py
+#	deleted:    Project/run_optimal_ensemble_test.py
+#	deleted:    Project/run_resumed_training.bat
+#	deleted:    Project/scripts/predict_emotion.py
+#	deleted:    Project/src/models/densenet_model.py
+#	deleted:    Project/src/training/densenet_trainer.py
+#	deleted:    Project/start_resumed_training_monitored.bat
+#	deleted:    Project/start_training_monitor.py
+#	deleted:    Project/test_densenet.py
+#	deleted:    Project/test_ensemble.py
+#	deleted:    Project/test_ensemble_fixed.py
+#	deleted:    Project/test_epoch_52_best_model.py
+#	deleted:    Project/test_epoch_54_model.py
+#	deleted:    Project/test_high_vocal_bias.py
+#	deleted:    Project/test_resume_imports.py
+#	deleted:    Project/test_stt_fix.py
+#	deleted:    Project/train_densenet.py
+#	deleted:    Project/train_densenet_simple.py
+#	deleted:    Project/train_models.py
+#	deleted:    Project/train_optimized_densenet.py
+#
