@@ -202,3 +202,126 @@ class EmotionResNet(nn.Module):
         
         return self.classifier(x)
 
+
+class DenseBlock(nn.Module):
+    """Dense Block for DenseNet"""
+    
+    def __init__(self, in_channels, growth_rate, num_layers, dropout=0.1):
+        super(DenseBlock, self).__init__()
+        
+        self.layers = nn.ModuleList()
+        for i in range(num_layers):
+            layer = nn.Sequential(
+                nn.BatchNorm2d(in_channels + i * growth_rate),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(in_channels + i * growth_rate, 4 * growth_rate, 
+                         kernel_size=1, bias=False),
+                nn.BatchNorm2d(4 * growth_rate),
+                nn.ReLU(inplace=True),
+                nn.Conv2d(4 * growth_rate, growth_rate, 
+                         kernel_size=3, padding=1, bias=False),
+                nn.Dropout2d(dropout)
+            )
+            self.layers.append(layer)
+    
+    def forward(self, x):
+        features = [x]
+        for layer in self.layers:
+            new_feature = layer(torch.cat(features, 1))
+            features.append(new_feature)
+        return torch.cat(features, 1)
+
+
+class TransitionLayer(nn.Module):
+    """Transition layer between dense blocks"""
+    
+    def __init__(self, in_channels, out_channels, dropout=0.1):
+        super(TransitionLayer, self).__init__()
+        
+        self.transition = nn.Sequential(
+            nn.BatchNorm2d(in_channels),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(in_channels, out_channels, kernel_size=1, bias=False),
+            nn.Dropout2d(dropout),
+            nn.AvgPool2d(kernel_size=2, stride=2)
+        )
+    
+    def forward(self, x):
+        return self.transition(x)
+
+
+class EmotionDenseNet(nn.Module):
+    """DenseNet model for emotion recognition"""
+    
+    def __init__(self, num_classes=8, growth_rate=32, block_config=(6, 12, 24, 16), 
+                 num_init_features=64, dropout=0.1):
+        super(EmotionDenseNet, self).__init__()
+        
+        # Initial convolution
+        self.features = nn.Sequential(
+            nn.Conv2d(1, num_init_features, kernel_size=7, stride=2, padding=3, bias=False),
+            nn.BatchNorm2d(num_init_features),
+            nn.ReLU(inplace=True),
+            nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
+        )
+        
+        # Dense blocks and transition layers
+        num_features = num_init_features
+        for i, num_layers in enumerate(block_config):
+            # Add dense block
+            block = DenseBlock(num_features, growth_rate, num_layers, dropout)
+            self.features.add_module(f'denseblock{i+1}', block)
+            num_features += num_layers * growth_rate
+            
+            # Add transition layer (except after last dense block)
+            if i != len(block_config) - 1:
+                trans = TransitionLayer(num_features, num_features // 2, dropout)
+                self.features.add_module(f'transition{i+1}', trans)
+                num_features = num_features // 2
+        
+        # Final batch norm
+        self.features.add_module('norm5', nn.BatchNorm2d(num_features))
+        self.features.add_module('relu5', nn.ReLU(inplace=True))
+        
+        # Global average pooling
+        self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+        
+        # Classifier
+        self.classifier = nn.Sequential(
+            nn.Linear(num_features, 512),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(512, 256),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(256, 128),
+            nn.ReLU(inplace=True),
+            nn.Dropout(dropout),
+            nn.Linear(128, num_classes)
+        )
+        
+        # Initialize weights
+        self._initialize_weights()
+    
+    def _initialize_weights(self):
+        """Initialize model weights"""
+        for m in self.modules():
+            if isinstance(m, nn.Conv2d):
+                nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
+            elif isinstance(m, nn.BatchNorm2d):
+                nn.init.constant_(m.weight, 1)
+                nn.init.constant_(m.bias, 0)
+            elif isinstance(m, nn.Linear):
+                nn.init.normal_(m.weight, 0, 0.01)
+                nn.init.constant_(m.bias, 0)
+    
+    def forward(self, x):
+        if x.dim() == 3:
+            x = x.unsqueeze(1)  # Add channel dimension
+        
+        features = self.features(x)
+        out = self.avgpool(features)
+        out = out.view(out.size(0), -1)
+        out = self.classifier(out)
+        
+        return out
